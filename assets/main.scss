@@ -1,24 +1,36 @@
 ---
 ---
 
-$text-color: #46433A;
-$anchor-text-color: #CE534D;
-$background-color: #F1EED9;
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+$text-color: #000000;
+$anchor-text-color: #000000;
+$background-color: #FFFFFF;
 
 body {
-	font-family: 'Vollkorn', serif;
+	font-family: 'Arial', serif; /* Changed font-family */
 	color: $text-color;
 	background-color: $background-color;
+	min-height: 100vh; /* Changed height to min-height for better content flow */
+	margin: 0; /* Reset default body margin */
+	padding: 0; /* Reset default body padding */
+	box-sizing: border-box; /* Ensure padding and border are inside the element's total width and height */
 }
 
 header,
 main {
-	padding: 0 20px;
+	padding: 20px; /* Consistent padding for both */
 }
 
 /*** wrapper div for both header and main ***/
 .wrapper {
 	margin-top: 10%;
+	width: 90%; /* Default width for smaller screens */
+	max-width: 1200px; /* Maximum width for larger screens */
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /*** anchor tags ***/
@@ -31,15 +43,15 @@ a:active {
 }
 
 a:hover {
-	text-decoration: underline;
+	text-decoration: underline; /* Changed hover effect */
 }
 
 
 /*** main content list ***/
 .main-list-item {
 	font-weight: bold;
-	font-size: 1.2em;
-	margin: 0.8em 0;
+	font-size: 1.1em; /* Slightly reduced font size for better flow on smaller screens */
+	margin: 0.7em 0; /* Slightly reduced margin */
 }
 
 /* override the left margin added by font awesome for the main content list,
@@ -50,39 +62,43 @@ since it must be aligned with the content */
 
 /* list icons */
 .main-list-item-icon {
-	width: 36px;
+	width: 30px; /* Slightly smaller icon */
 	color: $text-color;
+	margin-right: 8px; /* Add some spacing between icon and text */
+	display: inline-block; /* For better alignment */
+	vertical-align: middle; /* For better alignment */
 }
 
 /*** logo ***/
 .logo-container {
 	text-align: center;
+	margin-bottom: 20px; /* Add some space below the logo */
 }
 
 .logo {
-	width: 96px;
-	height: 96px;
+	width: 120px; /* Smaller default logo size */
+	height: 120px; /* Smaller default logo size */
 	display: inline-block;
 	background-size: cover;
 	border-radius: 50%;
 	-moz-border-radius: 50%;
-	border: 2px solid $background-color;
-	box-shadow: 0 0 0 3px $text-color;
+	border: 2px solid $background-color; /* Added border */
+	box-shadow: 0 0 0 3px $text-color; /* Added box-shadow */
 }
 
 /*** author ***/
 .author-container h1 {
-	font-size: 2.8em;
+	font-size: 2em; /* Smaller default heading size */
 	margin-top: 0;
-	margin-bottom: 0;
+	margin-bottom: 0.5em; /* Reduced bottom margin */
 	text-align: center;
 }
 
 /*** tagline ***/
 .tagline-container p {
-	font-size: 1.3em;
+	font-size: 1em; /* Smaller default tagline size */
 	text-align: center;
-	margin-bottom: 2em;
+	margin-bottom: 1.5em; /* Reduced bottom margin */
 }
 
 /******/
@@ -93,47 +109,96 @@ hr {
 	background-image: -moz-linear-gradient(left, rgba(0,0,0,0), $text-color, rgba(0,0,0,0));
 	background-image: -ms-linear-gradient(left, rgba(0,0,0,0), $text-color, rgba(0,0,0,0));
 	background-image: -o-linear-gradient(left, rgba(0,0,0,0), $text-color, rgba(0,0,0,0));
+	margin: 20px 0; /* Add some top and bottom margin to the hr */
 }
 
 /*** footer ***/
 footer {
 	position: fixed;
 	bottom: 0;
-	right: 0;
-	height: 20px;
+	left: 0; /* Align to the left as well for full width */
+	width: 100%; /* Make the footer full width */
+	height: auto; /* Adjust height based on content */
+	background-color: $background-color; /* Optional: add background color to the footer */
+	padding: 10px 0; /* Add some padding to the footer */
+	text-align: center; /* Center the text in the footer */
+	box-sizing: border-box; /* Ensure padding is inside the footer's width */
 }
 
 .poweredby {
 	font-family: "Arial Narrow", Arial;
-	font-size: 0.6em;
-	line-height: 0.6em;
-	padding: 0 5px;
+	font-size: 0.7em; /* Slightly larger for better readability */
+	line-height: 1em; /* Adjust line height */
+	padding: 5px; /* Add some padding */
+	display: inline-block; /* To allow potential for other footer elements */
 }
 
-/*** media queries ***/
-/* X-Small devices (phones, 480px and up) */
-@media (min-width: 480px) {
-	/* wrapper stays 480px wide past 480px wide and is kept centered */
-	.wrapper {
-		width: 480px;
-		margin: 10% auto 0 auto;
-	}
+.link-list {
+	text-align: center; /* Default alignment for smaller screens */
+	margin-top: 10px;
 }
 
-/* All other devices (768px and up) */
+.link-list ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: inline-block; /* Keep links in a row on smaller screens if they fit */
+}
+
+.link-list li {
+	display: inline;
+	margin: 0 10px;
+}
+
+/* Adjustments for different screen sizes */
+
+/* Small devices (phones, less than 768px) - These are the default styles */
+
+/* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-	/* past 768px the layout is changed and the wrapper has a fixed width of 680px
-	to accomodate both the header column and the content column */
 	.wrapper {
-		width: 680px;
+		width: 750px; /* Adjust wrapper width for tablets */
+		margin-top: 5%; /* Slightly reduce top margin on larger screens */
 	}
 
-	/* the header column stays left and has a dynamic width with all contents
-	aligned right */
+	.logo {
+		width: 160px;
+		height: 160px;
+	}
+
+	.author-container h1 {
+		font-size: 2.4em;
+	}
+
+	.tagline-container p {
+		font-size: 1.2em;
+	}
+
+	.main-list-item {
+		font-size: 1.15em;
+	}
+
+	.link-list {
+		text-align: center; /* Keep centered on tablets */
+	}
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	.wrapper {
+		width: 970px; /* Adjust wrapper width for desktops */
+	}
+
 	header {
 		float: left;
-		width: 46%;
+		width: 40%; /* Adjust header width */
 		text-align: right;
+		padding-right: 30px; /* Add some right padding for spacing */
+		box-sizing: border-box;
+	}
+
+	.logo-container {
+		margin-bottom: 30px;
 	}
 
 	.author-container h1,
@@ -143,8 +208,39 @@ footer {
 	}
 
 	main {
-		width: 46%;
-		margin-left: 54%;
-		padding: 0;
+		width: 55%; /* Adjust main width */
+		margin-left: 45%; /* Adjust main margin */
+		padding-left: 30px; /* Add some left padding for spacing */
+		box-sizing: border-box;
+		padding-top: 20px; /* Add some top padding to align with header content */
+	}
+
+	.link-list {
+		margin-top: 20px;
+		text-align: right;
+	}
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+	.wrapper {
+		width: 1170px; /* Adjust wrapper width for larger desktops */
+	}
+
+	.logo {
+		width: 192px;
+		height: 192px;
+	}
+
+	.author-container h1 {
+		font-size: 2.8em;
+	}
+
+	.tagline-container p {
+		font-size: 1.3em;
+	}
+
+	.main-list-item {
+		font-size: 1.2em;
 	}
 }
